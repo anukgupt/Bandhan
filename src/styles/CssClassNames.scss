@@ -1,0 +1,49 @@
+$prefix: aex-;
+
+.#{$prefix}background-position-left-bottom {
+  background-position: left bottom;
+}
+
+.#{$prefix}background-repeat-no-repeat {
+  background-repeat: no-repeat;
+}
+
+.#{$prefix}border-top-style-solid {
+  border-top-style: solid;
+}
+
+.#{$prefix}border-top-width-1 {
+  border-top-width: 1px;
+}
+
+.#{$prefix}border-radius-50 {
+  border-radius: 50%;
+}
+
+.#{$prefix}display-inline-flex {
+  display: inline-flex;
+}
+
+.#{$prefix}flex-auto {
+  flex: auto;
+}
+
+.#{$prefix}flex-none {
+  flex: none;
+}
+
+.#{$prefix}flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+.#{$prefix}justify-content-space-around {
+  justify-content: space-around;
+}
+
+.#{$prefix}justify-content-space-between {
+  justify-content: space-between;
+}
+
+.#{$prefix}white-space-normal {
+  white-space: normal;
+}

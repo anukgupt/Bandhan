@@ -1,0 +1,69 @@
+@import "_platformCommon.scss";
+$prefix: aex-;
+
+$allNeutralColors: (
+  80: $neutral-80,
+  70: $neutral-70,
+  60: $neutral-60,
+  30: $neutral-30,
+  20: $neutral-20,
+  10: $neutral-10,
+  8: $neutral-8,
+  6: $neutral-6,
+  4: $neutral-4,
+  2: $neutral-2
+);
+
+@each $key, $color in $allNeutralColors {
+  .#{$prefix}color-neutral-#{$key} {
+    color: $color;
+  }
+
+  .#{$prefix}border-top-color-neutral-#{$key} {
+    border-top-color: $color;
+  }
+}
+
+.background-color-default {
+  background-color: $backgroundColor;
+}
+
+.background-color-communication-background {
+  background-color: $communication-background;
+}
+
+.background-color-neutral-2 {
+  background-color: $neutral-2;
+}
+
+.background-color-status-info-background {
+  background-color: $status-info-background;
+}
+
+.background-color-status-error-background {
+  background-color: $status-error-background;
+}
+
+.#{$prefix}color-primary-text {
+  color: $primary-text;
+}
+
+.#{$prefix}color-secondary-text {
+  color: $secondary-text;
+}
+
+.color-text-on-communication-background {
+  color: $text-on-communication-background;
+}
+
+.color-communication-foreground {
+  color: $communication-foreground;
+}
+
+.color-white {
+  color: $white;
+}
+
+.color-status-error-foreground {
+  color: $status-error-foreground;
+}

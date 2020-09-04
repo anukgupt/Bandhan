@@ -1,0 +1,143 @@
+@import "./CssClassNames.scss";
+@import "./ColorClassNames.scss";
+@import "./Sizing.scss";
+@import "./Spacing.scss";
+
+body {
+  font-family: "Segoe UI","-apple-system",BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: .875rem;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%; 
+}
+.headingWithIcon {
+  margin-left: .5rem;
+}
+.tenantDropdown {
+  padding-left: 45%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-right: 45%;
+}
+
+.subsDropdown {
+  padding-top: 30%
+}
+
+.aex-acquisition-core-acquisition-modal-inner {
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 24px;
+    min-width: 304px;
+  }
+  padding: 44px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  max-width: 440px;
+  min-width: 320px;
+  width: calc(100% - 40px);
+}
+.justify-center {
+  justify-content: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.fontWeightSemiBold {
+  font-weight: 600;
+}
+.fontSizeLL {
+  font-size: 1.5rem;
+}
+.bolt-formitem-label {
+  color: inherit;
+  margin-bottom: 20px;
+}
+.body-m {
+  font-size: .875rem;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.flex {
+  display: flex;
+}
+.h-scroll-auto {
+  overflow-x: auto;
+}
+.v-scroll-auto {
+  overflow-y: auto;
+}
+.full-size {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.flex-center {
+  align-items: center;
+}
+.dropdown {
+  background-color: inherit;
+  padding: 5px 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+.text-right {
+  text-align: right;
+}
+.bolt-button.primary {
+  background-color: rgba(0,120,212,1);
+  background-color: var(--communication-background,rgba(0, 120, 212, 1));
+  color: rgba(255,255,255,1);
+  color: var(--text-on-communication-background,rgba(255, 255, 255, 1));
+}
+button.bolt-button {
+  height: auto;
+}
+.bolt-button {
+  background-color: rgba(0,0,0,.06);
+  background-color: var(--palette-black-alpha-6,rgba(0, 0, 0, .06));
+  color: rgba(0,0,0,.9);
+  color: var(--text-primary-color,rgba(0, 0, 0, .9));
+  margin: 0;
+}
+.bolt-button {
+  align-items: center;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  justify-content: center;
+  line-height: inherit;
+  outline: none;
+  overflow: visible;
+  padding: 6px 12px;
+  position: relative;
+  transition: background 80ms linear;
+}
+input, select, textarea, button {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+* {
+  box-sizing: inherit;
+}
+.errormsg {
+  color: red;
+  padding-left: 10px;
+}
+.successmsg {
+  color: green;
+  padding-left: 10px;
+}

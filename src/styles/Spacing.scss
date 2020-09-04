@@ -1,0 +1,111 @@
+@import "_platformCommon.scss";
+$prefix: aex-;
+
+$allSpacings: (
+  4: $spacing-4,
+  8: $spacing-8,
+  12: $spacing-12,
+  16: $spacing-16,
+  20: $spacing-20,
+  32: $spacing-32,
+  40: $spacing-40
+);
+
+$extendedSpacings: map-merge(
+  $allSpacings,
+  (
+    0: 0,
+    -4: -$spacing-4,
+    -8: -$spacing-8,
+    -12: -$spacing-12,
+    -16: -$spacing-16,
+    -20: -$spacing-20,
+    -32: -$spacing-32,
+    -40: -$spacing-40
+  )
+);
+
+$marginSpacings: map-merge(
+  $extendedSpacings,
+  (
+    auto: auto
+  )
+);
+
+@each $key, $spacing in $allSpacings {
+  .#{$prefix}spacing-container-x-#{$key} {
+    > * + * {
+      margin-left: $spacing;
+    }
+  }
+
+  .#{$prefix}spacing-container-y-#{$key} {
+    > * + * {
+      margin-top: $spacing;
+    }
+  }
+}
+
+@each $key, $spacing in $marginSpacings {
+  .#{$prefix}margin-top-#{$key} {
+    margin-top: $spacing;
+  }
+
+  .#{$prefix}margin-right-#{$key} {
+    margin-right: $spacing;
+  }
+
+  .#{$prefix}margin-left-#{$key} {
+    margin-left: $spacing;
+  }
+
+  .#{$prefix}margin-bottom-#{$key} {
+    margin-bottom: $spacing;
+  }
+
+  .#{$prefix}margin-x-#{$key} {
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
+
+  .#{$prefix}margin-y-#{$key} {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+  }
+
+  .#{$prefix}margin-#{$key} {
+    margin: $spacing;
+  }
+}
+
+@each $key, $spacing in $extendedSpacings {
+  .#{$prefix}padding-top-#{$key} {
+    padding-top: $spacing;
+  }
+
+  .#{$prefix}padding-right-#{$key} {
+    padding-right: $spacing;
+  }
+
+  .#{$prefix}padding-left-#{$key} {
+    padding-left: $spacing;
+  }
+
+  .#{$prefix}padding-bottom-#{$key} {
+    padding-bottom: $spacing;
+  }
+
+  .#{$prefix}padding-x-#{$key} {
+    padding-left: $spacing;
+    padding-right: $spacing;
+  }
+
+  .#{$prefix}padding-y-#{$key} {
+    padding-top: $spacing;
+    padding-bottom: $spacing;
+  }
+
+  .#{$prefix}padding-#{$key} {
+    padding: $spacing;
+  }
+}
