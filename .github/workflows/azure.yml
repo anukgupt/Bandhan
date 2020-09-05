@@ -32,4 +32,4 @@ jobs:
         app-name: 'bandhan'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_3c094c3c3d0d4d2a9ff0fb380e84811b }}
-        package: .
+        package: ./build
