@@ -108,7 +108,7 @@ export default function withAuthProvider<T extends React.Component<any>>
                 if (this.isInteractionRequired(err)) {
                     var interactiveResult = await this.userAgentApplication.acquireTokenPopup({
                         scopes: scopes,
-                        redirectUri: 'http://localhost:3000/blank.html'
+                        redirectUri: 'https://bandhan.azurewebsites.net/'
                     });
 
                     return interactiveResult.accessToken;
