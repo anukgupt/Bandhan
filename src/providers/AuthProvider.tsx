@@ -95,6 +95,9 @@ export default function withAuthProvider<T extends React.Component<any>>
                     requestAuthority = 'https://login.microsoftonline.com/' + authority;
                     await this.login(requestAuthority);
                 }
+                if (!requestAuthority) {
+                    requestAuthority = 'https://login.microsoftonline.com/' + this.state.currentAuthority || 'common';
+                }
                 var silentResult = await this.userAgentApplication.acquireTokenSilent({
                     scopes: scopes,
                     authority: requestAuthority
