@@ -27,6 +27,7 @@ class MappingModalInternal {
     }
     public static setTenantId(tenantId: any) {
         this.tenantId = tenantId
+        this.subscriptionId = ''
     }
     public static setSubscriptionId(subscriptionId: any) {
         this.subscriptionId = subscriptionId
