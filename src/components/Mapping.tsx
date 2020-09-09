@@ -10,6 +10,11 @@ import { saveMapping } from "../service/mappingService";
 import { Component } from "react";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
+import ClipLoader from "react-spinners/MoonLoader";
+
+//   {display: block,
+//   margin: 0 auto,
+//   border-color: blue});
 
 class MappingModalInternal {
     static installationId: string = '';
@@ -70,8 +75,9 @@ class MappingModalInternal {
 
 interface MapingState {
     success: any,
-    error: any
-  }
+    error: any,
+    loading: boolean
+}
 
 export class MappingModal extends Component<any, MapingState> {
     constructor(props: any) {
@@ -79,47 +85,55 @@ export class MappingModal extends Component<any, MapingState> {
         MappingModalInternal.setInstallationId(props.installationId);
         this.state = {
             success: {},
-            error : {}
+            error: {},
+            loading: false
         };
     }
     clearState() {
         this.setState({
             success: {},
-            error : {}
+            error: {}
         });
     }
     saveInstallationMapping(mappingInputs: { installationId: string; tenantId: string; subscriptionId: string; }) {
         this.clearState();
+        this.setState({
+            loading: true
+        });
         if (mappingInputs.installationId && mappingInputs.tenantId && mappingInputs.subscriptionId) {
             saveMapping(mappingInputs).then(result => {
                 this.setState({
                     success: {
                         message: "Successfully saved"
-                    }
+                    },
+                    loading: false
                 })
             }).catch(ex => {
                 this.setState({
                     error: {
                         message: ex.message
-                    }
+                    },
+                    loading: false
                 })
             });
         }
         else {
             this.setState({
                 error: {
-                    message: "Installation, Tenant and Subscription required."
-                }
+                    message: "Installation, Tenant and Subscription required.",
+                },
+                loading: false
             });
         }
     }
     render() {
         const styles = MappingModalInternal.getStyles();
         const backgourndImageUrl = `url("devops_log_in.BOhSu5kTfWwcDDxg.svg")`;
-        let propsToPass = {...this.props,
-            setTenantId:MappingModalInternal.setTenantId.bind(MappingModalInternal),
-            setSubscriptionId:MappingModalInternal.setSubscriptionId.bind(MappingModalInternal),
-            clearState: this.clearState.bind(this)    
+        let propsToPass = {
+            ...this.props,
+            setTenantId: MappingModalInternal.setTenantId.bind(MappingModalInternal),
+            setSubscriptionId: MappingModalInternal.setSubscriptionId.bind(MappingModalInternal),
+            clearState: this.clearState.bind(this)
         };
         return (
             <div className="full-size">
@@ -139,8 +153,8 @@ export class MappingModal extends Component<any, MapingState> {
                                 <MappingModalTitle>
                                     Setup your Azure info for Bandhan
                             </MappingModalTitle>
-                            {this.state.error.message && <ErrorMessage message={this.state.error.message} />}
-                            {this.state.success.message && <SuccessMessage message={this.state.success.message} />}
+                                {this.state.error.message && <ErrorMessage message={this.state.error.message} />}
+                                {this.state.success.message && <SuccessMessage message={this.state.success.message} />}
                                 <form
                                     className={formStyles.standardSpacingContainer}
                                     onSubmit={(ev) => {
@@ -150,13 +164,21 @@ export class MappingModal extends Component<any, MapingState> {
                                 >
                                     <Tenants {...propsToPass} />
                                     <div className="fontSize">
-                                        Choosing <span className="fontWeightHeavy">Continue</span>
+                                        Choosing <span className="fontWeightHeavy">save </span>
                             means that you agree to our <a className="terms-of-service-link bolt-link" href="https://go.microsoft.com/fwlink/?LinkID=266231" rel="noopener noreferrer" target="_blank">Terms of Service</a>, <a className="privacy-statement-link bolt-link" href="https://go.microsoft.com/fwlink/?LinkID=264782" rel="noopener noreferrer" target="_blank">Privacy Statement</a>, and <a className="code-of-conduct-link bolt-link" href="https://aka.ms/vstscodeofconduct" rel="noopener noreferrer" target="_blank">Code of Conduct</a>.</div>
-                                    <div className="text-right">
-                                        <button aria-disabled="false" className="continue-button bolt-button enabled primary bolt-focus-treatment" data-focuszone="" data-is-focusable="true" type="submit">
-                                            <span className="bolt-button-text body-m">Save</span>
-                                        </button>
-                                    </div>
+                                    {this.state.loading ? <ClipLoader
+                                        css={
+                                            css(`display: block;margin: 0 auto; margin-right: 0px;`)
+                                        }
+                                        size={40}
+                                        color={"#123abc"}
+                                        loading={this.state.loading}
+                                    /> :
+                                        <div className="text-right">
+                                            <button aria-disabled="false" className="continue-button bolt-button enabled primary bolt-focus-treatment" data-focuszone="" data-is-focusable="true" type="submit">
+                                                <span className="bolt-button-text body-m">Save</span>
+                                            </button>
+                                        </div>}
                                 </form>
                             </div>
                         </div>
