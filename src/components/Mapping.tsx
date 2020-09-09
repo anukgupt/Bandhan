@@ -7,7 +7,6 @@ import { formStyles } from "../styles/Styling";
 import { CssClassNames } from "../styles/CssClassNames";
 import Tenants from "./Tenants";
 import { saveMapping } from "../service/mappingService";
-import { render } from "react-dom";
 import { Component } from "react";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
@@ -108,7 +107,7 @@ export class MappingModal extends Component<any, MapingState> {
         else {
             this.setState({
                 error: {
-                    message: "Validation error occured."
+                    message: "Installation, Tenant and Subscription required."
                 }
             });
         }
@@ -118,7 +117,9 @@ export class MappingModal extends Component<any, MapingState> {
         const backgourndImageUrl = `url("devops_log_in.BOhSu5kTfWwcDDxg.svg")`;
         let propsToPass = {...this.props,
             setTenantId:MappingModalInternal.setTenantId.bind(MappingModalInternal),
-            setSubscriptionId:MappingModalInternal.setSubscriptionId.bind(MappingModalInternal)};
+            setSubscriptionId:MappingModalInternal.setSubscriptionId.bind(MappingModalInternal),
+            clearState: this.clearState.bind(this)    
+        };
         return (
             <div className="full-size">
                 <div className="flex-grow v-scroll-auto h-scroll-auto flex flex-column region-content" data-renderedregion="content" role="main">
@@ -135,7 +136,7 @@ export class MappingModal extends Component<any, MapingState> {
                                     <span className={styles.brandingText}>Microsoft Azure</span>
                                 </div>
                                 <MappingModalTitle>
-                                    Setup your Azure Unified with GitHub project
+                                    Setup your Azure info for Bandhan
                             </MappingModalTitle>
                             {this.state.error.message && <ErrorMessage message={this.state.error.message} />}
                             {this.state.success.message && <SuccessMessage message={this.state.success.message} />}

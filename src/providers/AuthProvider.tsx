@@ -3,16 +3,6 @@ import { UserAgentApplication } from 'msal';
 
 import { config } from '../configs/Config';
 
-export interface AuthComponentProps {
-    error: any;
-    isAuthenticated: boolean;
-    login: Function;
-    logout: Function;
-    getAccessToken: Function;
-    setError: Function;
-    tenantId: string;
-}
-
 interface AuthProviderState {
     error: any;
     isAuthenticated: boolean;

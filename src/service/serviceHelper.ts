@@ -12,7 +12,7 @@ export function handleResponse(responseJson: any) {
                     throw new Error(data.Message);
                 });
             } else {
-                throw new Error("Error occured");
+                throw new Error("Error occured, try again later");
             }
         }
     }

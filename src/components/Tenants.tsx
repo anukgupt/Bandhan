@@ -1,7 +1,7 @@
 import React from 'react';
 import { config } from '../configs/Config';
 import { getTenants } from '../service/tenantService';
-import withAuthProvider, { AuthComponentProps } from '../providers/AuthProvider';
+import withAuthProvider from '../providers/AuthProvider';
 import Subscriptions from './Subscriptions';
 
 interface TenantsState {
@@ -25,7 +25,8 @@ class Tenants extends React.Component<any, TenantsState> {
 
   async componentDidMount() {
     try {
-     let accessToken = await this.props.getAccessToken('', config.azureApiScopes);
+      this.props.clearState();
+      let accessToken = await this.props.getAccessToken('', config.azureApiScopes);
       let tenants = await getTenants(accessToken);
       this.setState({ tenants: tenants });
     }
@@ -34,19 +35,20 @@ class Tenants extends React.Component<any, TenantsState> {
     }
   }
   render() {
-    let a: any = {
+    let subscriptionProps: any = {
       ...this.props,
       tenantId: this.state.selectedTenant
     };
     return (
       <div className="flex-column">
               <label className="bolt-formitem-label body-m">Select your Azure Tenant</label>
-              <select className="flex-column flex-center dropdown" onChange={(event) => {
+              <select className="flex-column flex-center dropdown tenantDropdown" onChange={(event) => {
                 event.target.value === "ignore" ? this.setState({ selectedTenant: '' }) :
                   this.setState({ selectedTenant: event.target.value })
                   this.props.setTenantId(event.target.value);
+                  this.props.clearState();
               }}>
-                <option value="ignore">----</option>
+                <option value="ignore"></option>
                 {
                   this.state.tenants && this.state.tenants.value &&
                   this.state.tenants.value.length > 0 &&
@@ -58,7 +60,7 @@ class Tenants extends React.Component<any, TenantsState> {
                 }
               </select>
 
-        <Subscriptions {...a}></Subscriptions>
+        <Subscriptions {...subscriptionProps}></Subscriptions>
       </div>
     );
   }

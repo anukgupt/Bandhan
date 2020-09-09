@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withAuthProvider, { AuthComponentProps } from '../providers/AuthProvider';
+import withAuthProvider from '../providers/AuthProvider';
 import { MappingModal } from "./Mapping";
 import { Uri, urlSearchParamsGet } from '../providers/Url';
 
