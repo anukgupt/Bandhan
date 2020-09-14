@@ -1,7 +1,7 @@
 import { handleResponse } from "./serviceHelper";
 
 export async function saveMapping(mappingInputs: { installationId: string; tenantId: string; subscriptionId: string; }) {
-    var url = " https://chmudili4.azurewebsites.net/api/installation-scopes";
+    var url = " https://bandhanv1.azurewebsites.net/api/installation-scopes";
     return fetch(url, {
         method: 'POST',
         headers: new Headers({
