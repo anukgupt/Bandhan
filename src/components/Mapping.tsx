@@ -11,6 +11,7 @@ import { Component } from "react";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 import ClipLoader from "react-spinners/MoonLoader";
+import ClientService from "./ClientService";
 
 //   {display: block,
 //   margin: 0 auto,
@@ -163,6 +164,7 @@ export class MappingModal extends Component<any, MapingState> {
                                     }}
                                 >
                                     <Tenants {...propsToPass} />
+                                    {/* <ClientService /> */}
                                     <div className="fontSize">
                                         Choosing <span className="fontWeightHeavy">save </span>
                             means that you agree to our <a className="terms-of-service-link bolt-link" href="https://go.microsoft.com/fwlink/?LinkID=266231" rel="noopener noreferrer" target="_blank">Terms of Service</a>, <a className="privacy-statement-link bolt-link" href="https://go.microsoft.com/fwlink/?LinkID=264782" rel="noopener noreferrer" target="_blank">Privacy Statement</a>, and <a className="code-of-conduct-link bolt-link" href="https://aka.ms/vstscodeofconduct" rel="noopener noreferrer" target="_blank">Code of Conduct</a>.</div>
