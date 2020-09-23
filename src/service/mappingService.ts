@@ -10,8 +10,8 @@ export async function saveMapping(mappingInputs: { installationId: string; tenan
         }),
         body: JSON.stringify({
             "InstallationId": parseInt(mappingInputs.installationId),
-            "Tenant": mappingInputs.tenantId,
-            "Subscription": mappingInputs.subscriptionId
+            "TenantId": mappingInputs.tenantId,
+            "SubscriptionId": mappingInputs.subscriptionId
         })
     }).then(responseJson => {
         return handleResponse(responseJson);  
